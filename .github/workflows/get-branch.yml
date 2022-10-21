@@ -23,7 +23,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         id: branch_name
-        run: echo "BRANCH=${git branch --show-current}" >> $GITHUB_OUTPUT
+        run: echo "BRANCH=$(git branch --show-current)" >> $GITHUB_OUTPUT
       
       - name: Get Branch
         run: echo "The branch is ${{ steps.branch_name.outputs.BRANCH }}"
