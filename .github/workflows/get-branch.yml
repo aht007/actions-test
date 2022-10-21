@@ -20,5 +20,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: Branch name
-        run: echo running on branch ${{ github.head_ref || github.ref_name }} 
+      - name: Set Branch name
+        id: branch-name
+        run: echo "BRANCH=${{ github.head_ref || github.ref_name }}" >> $GITHUB_OUTPUT
+      
+      - name: Get Branch name
+        run: echo ${{ steps.branch-name.outputs.BRANCH }}
