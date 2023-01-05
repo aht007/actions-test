@@ -2,8 +2,11 @@ name: Get Default Branch Name from Checkout
 
 on:
   workflow_dispatch:
-  
-      steps:
+
+jobs:
+  branch-name:
+    runs-on: ubuntu-20.04
+    steps:
       - uses: actions/checkout@v3
         with:
             repository: aht007/haemo-support-backend
@@ -11,6 +14,6 @@ on:
 
       - name: Output Repo Name
         run: echo ${{github.event.repository.default_branch}}
-        
+
       - name: Output All github context
         run: echo ${{github}}
