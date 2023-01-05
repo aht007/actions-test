@@ -12,16 +12,7 @@ jobs:
             repository: aht007/haemo-support-backend
             token: ${{ secrets.REQUIREMENTS_BOT_GITHUB_TOKEN }}
 
-      - name: Output Repo Name
-        run: echo ${{github.event.repository.default_branch}}
-
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-
+      - name: Output Github Workspace Context
+      - run: |
+          echo ${{ github.workspace }}
+          echo $GITHUB_WORKSPACE
