@@ -11,8 +11,13 @@ jobs:
         with:
             repository: aht007/haemo-support-backend
             token: ${{ secrets.REQUIREMENTS_BOT_GITHUB_TOKEN }}
-
-      - name: Output Github Workspace Context
+            fetch-depth: 0
+      - name: Get Branch
         run: |
-          echo ${{ github.workspace }}
-          echo $GITHUB_WORKSPACE
+          raw=$(git branch -r --contains ${{ github.ref }})
+          branch=${raw##*/}
+          echo $raw
+          echo $branch
+          echo "BRANCH=$branch" >> $GITHUB_ENV
+      - if: ${{ env.BRANCH == 'main' }}
+        run: echo ${{ env.BRANCH }}
