@@ -15,7 +15,7 @@ jobs:
             fetch-depth: 0
       - name: Get Branch
         run: |
-          raw=$(git branch)
+          raw=$(git branch --show-current)
           branch=${raw##*/}
           echo $raw
           echo $branch
