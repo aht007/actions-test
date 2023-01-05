@@ -13,6 +13,6 @@ jobs:
             token: ${{ secrets.REQUIREMENTS_BOT_GITHUB_TOKEN }}
 
       - name: Output Github Workspace Context
-      - run: |
+        run: |
           echo ${{ github.workspace }}
           echo $GITHUB_WORKSPACE
