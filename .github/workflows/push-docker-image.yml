@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - open-release/*
+      - open-release/**
 jobs:
   push:
     runs-on: ubuntu-latest
@@ -21,8 +21,8 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
-            const releasePrefix = 'refs/tags/open-release/';
-            const tagName = context.ref.split(releasePrefix)[1] || 'latest';
+            const branchName = context.ref.split('/').slice(-1)[0];
+            const tagName = branchName === 'master' ? 'latest' : branchName;
             console.log('Will use tag: ' + tagName);
             return tagName;
           result-encoding: string
