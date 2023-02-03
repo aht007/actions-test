@@ -22,6 +22,7 @@ jobs:
         with:
           script: |
             const releasePrefix = 'refs/tags/open-release/';
+            echo $context
             const tagName = context.ref.split(releasePrefix)[1] || 'latest';
             console.log('Will use tag: ' + tagName);
             return tagName;
